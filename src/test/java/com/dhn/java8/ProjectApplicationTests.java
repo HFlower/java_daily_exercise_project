@@ -1,4 +1,4 @@
-package com.dhn.demo;
+package com.dhn.java8;
 
 import org.junit.Test;
 import org.junit.runner.RunWith;
