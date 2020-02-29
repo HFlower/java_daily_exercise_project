@@ -58,6 +58,19 @@
             <artifactId>spring-boot-starter-test</artifactId>
             <scope>test</scope>
         </dependency>
+
+            <!-- cas -->
+            <dependency>
+                <groupId>org.jasig.cas.client</groupId>
+                <artifactId>cas-client-core</artifactId>
+                <version>3.3.3</version>
+            </dependency>
+            <dependency>
+                <groupId>javax.servlet</groupId>
+                <artifactId>servlet-api</artifactId>
+                <version>2.5</version>
+                <scope>provided</scope>
+            </dependency>
     </dependencies>
 
     <build>
@@ -66,6 +79,19 @@
                 <groupId>org.springframework.boot</groupId>
                 <artifactId>spring-boot-maven-plugin</artifactId>
             </plugin>
+
+
+            <!--<plugin>
+                <groupId>org.apache.tomcat.maven</groupId>
+                <artifactId>tomcat7-maven-plugin</artifactId>
+                <configuration>
+                    &lt;!&ndash; 指定端口 &ndash;&gt;
+                    <port>9001</port>
+                    &lt;!&ndash; 请求路径 &ndash;&gt;
+                    <path>/</path>
+                </configuration>
+            </plugin>-->
+
         </plugins>
     </build>
 

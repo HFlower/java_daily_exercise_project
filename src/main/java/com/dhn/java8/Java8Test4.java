@@ -2,6 +2,7 @@ package com.dhn.java8;
 
 import java.time.*;
 import java.time.temporal.ChronoUnit;
+import java.time.temporal.TemporalAdjusters;
 
 /**
  * @description:
@@ -12,13 +13,20 @@ public class Java8Test4 {
     public static void main(String[] args) {
 
         Java8Test4 test = new Java8Test4();
+        //本地DateTime API
 //        test.testLocalDateTime();
+        //ChronoUnit枚举
 //        test.testChronoUnits();
 
         //Period - 处理有关基于时间的日期数量。 Duration - 处理有关基于时间的时间量。
-        test.testPeriod();
-        test.testDuration();
+//        test.testPeriod();
+//        test.testDuration();
+
+        //时间调节器
+        test.testAdjusters();
     }
+
+
 
     private void testLocalDateTime() {
         //当前时间
@@ -96,4 +104,21 @@ public class Java8Test4 {
         System.out.println("Duration：" + duration);
     }
 
+    private void testAdjusters() {
+
+        LocalDate date1 = LocalDate.now();
+        System.out.println("Current date: " + date1);
+
+        LocalDate nextTuesday = date1.with(TemporalAdjusters.next(DayOfWeek.TUESDAY));
+        System.out.println("Next Tuesday on : " + nextTuesday);
+
+        LocalDate firstInYear = LocalDate.of(date1.getYear(),date1.getMonth(),1);
+
+        LocalDate secondSaturday = firstInYear.with(
+                TemporalAdjusters.nextOrSame(DayOfWeek.SATURDAY)
+        ).with(
+                TemporalAdjusters.next(DayOfWeek.SATURDAY)
+        );
+        System.out.println("Second saturday on : " + secondSaturday);
+    }
 }

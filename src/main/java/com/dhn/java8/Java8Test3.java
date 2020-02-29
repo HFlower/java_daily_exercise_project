@@ -33,6 +33,8 @@ public class Java8Test3 {
         return value1 + value2;
 
 
+
+
     }
 
 }
