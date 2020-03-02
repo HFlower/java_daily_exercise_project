@@ -1,9 +1,7 @@
 package com.dhn.javaclass;
 
 import java.text.SimpleDateFormat;
-import java.time.Clock;
-import java.time.LocalDate;
-import java.time.LocalDateTime;
+import java.time.*;
 import java.time.format.DateTimeFormatter;
 import java.time.temporal.TemporalAdjusters;
 import java.util.Calendar;
@@ -53,6 +51,8 @@ public class DateClass {
         System.out.println(Calendar.getInstance().getTimeInMillis());
         //java 8
         System.out.println(Clock.systemDefaultZone().millis());
+        Instant now = Instant.now();
+        System.out.println(now.toEpochMilli());
 
         System.out.println("***********************3、获取某月最后一天************************");
         //获取某月最后一天(2种方式)
@@ -90,6 +90,14 @@ public class DateClass {
         LocalDateTime ldt2 = ldt.minusDays(1);
         System.out.println("LocalDateTime----Yesterday:" +ldt2.format(dtf));
 
+        //计算程序运行时间差
+        Instant start = Instant.now();
+        //
+        Instant end = Instant.now();
+        //计算时间差 采用Duration来处理时间戳的差
+        Duration timeElapsed = Duration.between(start, end);
+        long millis = timeElapsed.toMillis();
+        System.out.println("millis = " + millis);
 
     }
 
