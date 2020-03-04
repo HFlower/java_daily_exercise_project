@@ -72,7 +72,7 @@ public class LinkedList {
     }
 
     /**
-     * 4.地递归翻转链表
+     * 4.递归翻转链表
      * @param node
      * @return
      */
@@ -104,6 +104,93 @@ public class LinkedList {
     }
 
     /**
+     * 6.给定一个链表的头结点 head,以及两个整数 from 和 to ,在链表上把第 from 个节点和第 to 个节点这一部分进行翻转。
+     * 例如：给定如下链表，from = 2, to = 4 head-->5-->4-->3-->2-->1 将其翻转后，链表变成 head-->5--->2-->3-->4-->1
+     * @param fromIndex
+     * @param toIndex
+     */
+    public void iterationInvertLinkedList(int fromIndex,int toIndex) throws Exception {
+
+        // from结点
+        Node fromNode = null;
+        //from-1结点
+        Node preFromNode = null;
+        //to结点
+        Node toNode = null;
+        //to+1结点
+        Node nextToNode = null;
+
+
+        Node temp = head.next;
+        //头结点index为1
+        int index = 1;
+
+        while(temp!=null){
+            if(index == fromIndex-1){
+                preFromNode = temp;
+            }else if (index == fromIndex){
+                fromNode = temp;
+            }else if (index == toIndex){
+                toNode = temp;
+            }else if(index == toIndex+1){
+                nextToNode = temp;
+            }
+
+            temp = temp.next;
+            index++;
+        }
+
+        if (fromNode==null||toNode==null){
+            throw new Exception("无法翻转");
+        }
+
+        Node pre = fromNode;
+        Node cur = pre.next;
+
+        while (cur!=nextToNode){
+            Node curNext = cur.next;
+            cur.next = pre;
+            pre = cur;
+            cur = curNext;
+        }
+
+        if(fromNode!=null) {
+            preFromNode.next = toNode;
+        }else {
+            head.next = toNode;
+        }
+
+        fromNode.next = nextToNode;
+
+    }
+
+    /**
+     * 7.给出一个链表，每 k 个节点一组进行翻转，并返回翻转后的链表。k 是一个正整数，它的值小于或等于链表的长度。
+     * 如果节点总数不是 k 的整数倍，那么将最后剩余节点保持原有顺序。
+     * 示例 : 给定这个链表：head-->1->2->3->4->5 当 k = 2 时，应当返回: head-->2->1->4->3->5
+     * 当 k = 3 时，应当返回: head-->3->2->1->4->5
+     * 说明 :
+     * 你的算法只能使用常数的额外空间。
+     * 你不能只是单纯的改变节点内部的值，而是需要实际的进行节点交换。
+     */
+    public void a(int k){
+
+        Node temp = head.next;
+
+
+
+    }
+
+    /**
+     * 逆序k个一组进行翻转
+     * 例如：给定如下链表，head-->1-->2-->3-->4-->5 逆序 k 个一组翻转后，链表变成
+     * head-->1--->3-->2-->5-->4 （k = 2 时）
+     */
+    public void b(){
+
+    }
+
+    /**
      * 打印链表
      */
     public void printLinkedList(){
@@ -128,7 +215,7 @@ public class LinkedList {
     }
 
 
-    public static void main(String[] args) {
+    public static void main(String[] args) throws Exception {
         int[] arr = new int[]{1,2,3,4,5,6};
         LinkedList linkedList = new LinkedList();
 
@@ -154,9 +241,10 @@ public class LinkedList {
 //        linkedList.head.next = newHead;
 
         //测试5
-        linkedList.iterationInvertLinkedList();
+//        linkedList.iterationInvertLinkedList();
 
-
+        //测试6
+        linkedList.iterationInvertLinkedList(2,5);
 
 
 
