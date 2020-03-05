@@ -173,12 +173,46 @@ public class LinkedList {
      * 你的算法只能使用常数的额外空间。
      * 你不能只是单纯的改变节点内部的值，而是需要实际的进行节点交换。
      */
-    public void a(int k){
+    public void iterationInvertLinkedListEveryK(int k){
 
         Node temp = head.next;
+        int step = 0;
 
+        Node startKPre = head;
+        Node startK = null;
+        Node endK = null;
 
+        while (temp!=null){
+            Node tempNext = temp.next;
+            if(step==0){
+                startK = temp;
+                step++;
+            }else if(step == k-1){
+                endK = temp;
+                Node pre = startK;
+                Node cur = startK.next;
+                if(cur==null){
+                    break;
+                }
+                Node endKNext = endK.next;
+                while (cur!=endKNext){
+                    Node curNext = cur.next;
+                    cur.next = pre;
+                    pre = cur;
+                    cur = curNext;
+                }
 
+                startKPre.next = endK;
+                startK.next = endKNext;
+
+                startKPre = startK;
+                step = 0;
+            }else{
+                step++;
+            }
+
+            temp = tempNext;
+        }
     }
 
     /**
@@ -218,7 +252,7 @@ public class LinkedList {
     public static void main(String[] args) throws Exception {
         int[] arr = new int[]{1,2,3,4,5,6};
         LinkedList linkedList = new LinkedList();
-
+        int k = 2;
         //测试1
         for (int i = 0; i < arr.length; i++){
             linkedList.tailInsert(arr[i]);
@@ -244,8 +278,9 @@ public class LinkedList {
 //        linkedList.iterationInvertLinkedList();
 
         //测试6
-        linkedList.iterationInvertLinkedList(2,5);
-
+//        linkedList.iterationInvertLinkedList(2,5);
+        //测试7
+        linkedList.iterationInvertLinkedListEveryK(k);
 
 
 
