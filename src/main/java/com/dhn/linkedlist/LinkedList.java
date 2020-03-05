@@ -210,7 +210,6 @@ public class LinkedList {
             }else{
                 step++;
             }
-
             temp = tempNext;
         }
     }
@@ -220,8 +219,10 @@ public class LinkedList {
      * 例如：给定如下链表，head-->1-->2-->3-->4-->5 逆序 k 个一组翻转后，链表变成
      * head-->1--->3-->2-->5-->4 （k = 2 时）
      */
-    public void b(){
-
+    public void reverseIterationInvertLinkedListEveryK(int k){
+        iterationInvertLinkedList();
+        iterationInvertLinkedListEveryK(k);
+        iterationInvertLinkedList();
     }
 
     /**
@@ -280,14 +281,11 @@ public class LinkedList {
         //测试6
 //        linkedList.iterationInvertLinkedList(2,5);
         //测试7
-        linkedList.iterationInvertLinkedListEveryK(k);
-
-
-
-
-
-         linkedList.printLinkedList();
-
+//        linkedList.iterationInvertLinkedListEveryK(k);
+        //测试八
+        linkedList.reverseIterationInvertLinkedListEveryK(k);
+        //输出链表
+        linkedList.printLinkedList();
 
     }
 
