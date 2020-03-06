@@ -14,6 +14,10 @@ public class LinkedList {
      * 哨兵结点
      */
     Node head = new Node(0);
+    /**
+     * 链表长度
+     */
+    int length = 0;
 
     /**
      * 1.从尾结点开始添加结点
@@ -215,7 +219,7 @@ public class LinkedList {
     }
 
     /**
-     * 逆序k个一组进行翻转
+     * 8.逆序k个一组进行翻转
      * 例如：给定如下链表，head-->1-->2-->3-->4-->5 逆序 k 个一组翻转后，链表变成
      * head-->1--->3-->2-->5-->4 （k = 2 时）
      */
@@ -224,6 +228,35 @@ public class LinkedList {
         iterationInvertLinkedListEveryK(k);
         iterationInvertLinkedList();
     }
+
+    /**
+     * 9.LeetCode 876：给定一个带有头结点 head 的非空单链表，返回链表的中间结点。
+     * 如果有两个中间结点，则返回第二个中间结点。
+     */
+    public Node findMiddleNode(){
+        //快指针
+        Node fast = head.next;
+        //慢指针
+        Node slow = head.next;
+        //链表长度为奇数:fast.next==null时slow为中间结点；为偶数：fast==null时slow为中间结点
+        while (fast!=null && fast.next!=null){
+            //快指针一次走两步
+            fast = fast.next.next;
+            //慢指针一次走一步
+            slow = slow.next;
+        }
+        return slow;
+    }
+
+    /**
+     * 10.输入一个链表，输出该链表中的倒数第 k 个结点。比如链表为 head-->1-->2-->3-->4-->5。
+     * 求倒数第三个结点（即值为 3 的节点）
+     * @param k
+     * @return
+     */
+//    public Node a(int k){
+//
+//    }
 
     /**
      * 打印链表
@@ -282,10 +315,18 @@ public class LinkedList {
 //        linkedList.iterationInvertLinkedList(2,5);
         //测试7
 //        linkedList.iterationInvertLinkedListEveryK(k);
-        //测试八
-        linkedList.reverseIterationInvertLinkedListEveryK(k);
+//        //测试8
+//        linkedList.reverseIterationInvertLinkedListEveryK(k);
+        //测试9
+//        Node node = linkedList.findMiddleNode();
+//        System.out.println("middle:"+node.data);
+
+
+
+
+
         //输出链表
-        linkedList.printLinkedList();
+//        linkedList.printLinkedList();
 
     }
 
