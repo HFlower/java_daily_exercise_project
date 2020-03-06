@@ -358,7 +358,7 @@ public class LinkedList {
         //长的链表比短的多的结点数
         int step =Math.abs(length1-length2);
         //长的先走多出来的结点数个步数
-        while (step>=0){
+        while (step>0){
             if (length1 > length2){
                 p1 = p1.next;
             }else {
@@ -368,7 +368,7 @@ public class LinkedList {
         }
 
         //从到相交位置相同的距离后一起走，边走边比较data是否相等
-        while (p1 !=null && p2 !=null){
+        while (p1 !=null && p2.next !=null){
             p1 = p1.next;
             p2 = p2.next;
            if (p1.data == p2.data){
@@ -376,6 +376,63 @@ public class LinkedList {
             }
         }
         return null;
+    }
+
+    /**
+     * 14.判断链表是否有环，如果有找到环的入口位置，要求空间复杂度为O(1)
+     * @return
+     */
+    public Node detectCrossNode(){
+
+        Node fast = head;
+        Node slow = head;
+
+        while (fast !=null && fast.next !=null){
+            fast = fast.next.next;
+            slow = slow.next;
+            if (fast == null){
+                return null;
+            }
+            if(fast.data == slow.data){
+                return slow;
+            }
+        }
+        return null;
+    }
+
+    /**
+     * 15.寻找环的入口
+     * @return
+     */
+    public Node getRingEntryNode() {
+        Node crossNode = detectCrossNode();
+        if(crossNode == null){
+            return null;
+        }
+
+        Node p1 = head;
+        Node p2 = crossNode;
+
+        while(p1.data != p2.data){
+            p1 = p1.next;
+            p2 = p2.next;
+        }
+        return p1;
+    }
+
+    /**
+     * 16.求环的长度
+     * @return
+     */
+    public int getRingLength(){
+        int length = 0;
+        Node entryNode = getRingEntryNode();
+        Node temp = entryNode;
+        while (temp.data != entryNode.data){
+            temp = temp.next;
+            length++;
+        }
+        return length;
     }
 
     /**
@@ -405,7 +462,7 @@ public class LinkedList {
 
     public static void main(String[] args) throws Exception {
         int[] arr = new int[]{1,2,3,4,5,6};
-        int[] arr1 = new int[]{0,3,4,5,6};
+        int[] arr1 = new int[]{0,3,4,5,6,7,8,9,1,2,5};
         LinkedList linkedList = new LinkedList();
         LinkedList linkedList1 = new LinkedList();
         int k = 2;
@@ -453,13 +510,8 @@ public class LinkedList {
         //测试12
 //        linkedList.deleteKthToTail(3);
         //测试13
-        Node node = detectCommonNode(linkedList,linkedList1);
-        System.out.println("第一个相交的结点:" + node.data);
-
-
-
-
-
+//        Node node = detectCommonNode(linkedList,linkedList1);
+//        System.out.println("第一个相交的结点:" + node.data);
 
         //输出链表
 //        linkedList.printLinkedList();
