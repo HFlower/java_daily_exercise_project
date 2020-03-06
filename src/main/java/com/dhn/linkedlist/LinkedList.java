@@ -254,9 +254,129 @@ public class LinkedList {
      * @param k
      * @return
      */
-//    public Node a(int k){
-//
-//    }
+    public Node findKthToTail(int k) throws Exception {
+        if (k<0||k==0){
+            throw new Exception("k不能小于0");
+        }
+        Node fast = head.next;
+        Node slow = head.next;
+
+        //fast指针先往前走k-1步
+        int tempK = k-1;
+        while(tempK > 0 && fast!=null){
+            fast = fast.next;
+            tempK--;
+        }
+        //k大于链表长度
+        if (fast==null){
+            throw new Exception("K结点不存在");
+        }
+        //快慢指针一起往前走，快指针到达最后一个结点时，慢指针所指的就是倒数第k个结点
+        while(fast.next!=null){
+            fast = fast.next;
+            slow = slow.next;
+        }
+
+        return slow;
+
+    }
+
+    /**
+     * 11.给定一个单链表，设计一个算法实现链表向右旋转 K 个位置。
+     * 举例：给定 head->1->2->3->4->5->NULL, K=3,右旋后即为 head->3->4->5-->1->2->NULL
+     * @param k
+     * @return
+     */
+    public void reversedKthToTail(int k) throws Exception {
+
+        //寻找倒数第k+1个结点
+        Node kPreNode = findKthToTail(k+1);
+        //倒数第k个结点
+        Node kNode = kPreNode.next;
+        //第一个结点
+        Node headNext = head.next;
+        //倒数第k+1个结点的下一个结点设为null
+        kPreNode.next = null;
+        //倒数第k个结点设为第一个结点
+        head.next = kNode;
+        //遍历找到尾结点
+        Node temp = kNode;
+        while(temp.next != null){
+            temp = temp.next;
+        }
+        //尾结点设为第一个结点
+        temp.next = headNext;
+
+    }
+
+    /**
+     * 12.输入一个链表，删除该链表中的倒数第 k 个结点
+     * @param k
+     */
+    public void deleteKthToTail(int k) throws Exception {
+        //先找到倒数第k+1个结点
+        Node kPreNode = findKthToTail(k+1);
+        //倒数第k个结点
+        Node kNode = kPreNode.next;
+
+        if(kNode != null){
+            //倒数第k+1个结点指向倒数第k个结点的下一个结点
+            kPreNode.next = kNode.next;
+        }else{
+            //kNode为null,倒数第k+1个结点直接指向null
+            kPreNode.next = null;
+        }
+    }
+
+    /**
+     * 13.判断两个单链表是否相交及找到第一个交点,要求空间复杂度 O(1)
+     * @param list1
+     * @param list2
+     * @return
+     */
+    public static Node detectCommonNode(LinkedList list1, LinkedList list2){
+
+        //链表的长度
+        int length1 = 0;
+        int length2 = 0;
+        //指向头结点的指针
+        Node p1 = list1.head;
+        Node p2 = list2.head;
+        //遍历链表获得长度
+        while(p1.next!=null){
+            length1++;
+            p1 = p1.next;
+        }
+        while (p2.next!=null){
+            length2++;
+            p2 = p2.next;
+        }
+        //指针归到head位置
+        p1 = list1.head;
+        p2 = list2.head;
+
+        //长的链表比短的多的结点数
+        int step =Math.abs(length1-length2);
+        //长的先走多出来的结点数个步数
+        while (step>=0){
+            if (length1 > length2){
+                p1 = p1.next;
+            }else {
+                p2 = p2.next;
+            }
+            step--;
+        }
+
+        //从到相交位置相同的距离后一起走，边走边比较data是否相等
+        while (p1 !=null && p2 !=null){
+            p1 = p1.next;
+            p2 = p2.next;
+           if (p1.data == p2.data){
+               return p1;
+            }
+        }
+        return null;
+    }
 
     /**
      * 打印链表
@@ -285,11 +405,16 @@ public class LinkedList {
 
     public static void main(String[] args) throws Exception {
         int[] arr = new int[]{1,2,3,4,5,6};
+        int[] arr1 = new int[]{0,3,4,5,6};
         LinkedList linkedList = new LinkedList();
+        LinkedList linkedList1 = new LinkedList();
         int k = 2;
         //测试1
         for (int i = 0; i < arr.length; i++){
             linkedList.tailInsert(arr[i]);
+        }
+        for (int i = 0; i < arr1.length; i++){
+            linkedList1.tailInsert(arr1[i]);
         }
 
 //        //测试2
@@ -320,6 +445,17 @@ public class LinkedList {
         //测试9
 //        Node node = linkedList.findMiddleNode();
 //        System.out.println("middle:"+node.data);
+        //测试10
+//        Node node = linkedList.findKthToTail(3);
+//        System.out.println("findKthToTail:"+node.data);
+        //测试11
+//        linkedList.reversedKthToTail(3);
+        //测试12
+//        linkedList.deleteKthToTail(3);
+        //测试13
+        Node node = detectCommonNode(linkedList,linkedList1);
+        System.out.println("第一个相交的结点:" + node.data);
+
 
 
 
@@ -327,6 +463,7 @@ public class LinkedList {
 
         //输出链表
 //        linkedList.printLinkedList();
+
 
     }
 
