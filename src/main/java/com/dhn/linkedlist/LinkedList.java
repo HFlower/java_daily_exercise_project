@@ -128,7 +128,7 @@
 //        //to+1结点
 //        Node nextToNode = null;
 //
-//
+//        //注意：temp和index从何开始
 //        Node temp = head.next;
 //        //头结点index为1
 //        int index = 1;
@@ -148,13 +148,16 @@
 //            index++;
 //        }
 //
+//        //注意：特殊情况
 //        if (fromNode==null||toNode==null){
 //            throw new Exception("无法翻转");
 //        }
 //
+//        //注意：cur永远是pre的下一个
 //        Node pre = fromNode;
 //        Node cur = pre.next;
 //
+//        //注意：cur到头的条件
 //        while (cur!=nextToNode){
 //            Node curNext = cur.next;
 //            cur.next = pre;
@@ -162,6 +165,7 @@
 //            cur = curNext;
 //        }
 //
+//        //注意：判空
 //        if(fromNode!=null) {
 //            preFromNode.next = toNode;
 //        }else {
@@ -173,7 +177,7 @@
 //    }
 //
 //    /**
-//     * 7.给出一个链表，每 k 个节点一组进行翻转，并返回翻转后的链表。k 是一个正整数，它的值小于或等于链表的长度。
+//     * 7.todo (很不熟练)给出一个链表，每 k 个节点一组进行翻转，并返回翻转后的链表。k 是一个正整数，它的值小于或等于链表的长度。
 //     * 如果节点总数不是 k 的整数倍，那么将最后剩余节点保持原有顺序。
 //     * 示例 : 给定这个链表：head-->1->2->3->4->5 当 k = 2 时，应当返回: head-->2->1->4->3->5
 //     * 当 k = 3 时，应当返回: head-->3->2->1->4->5
@@ -271,7 +275,7 @@
 //            fast = fast.next;
 //            tempK--;
 //        }
-//        //k大于链表长度
+//        //注意：边界条件，k大于链表长度
 //        if (fast==null){
 //            throw new Exception("K结点不存在");
 //        }
@@ -286,7 +290,7 @@
 //    }
 //
 //    /**
-//     * 11.给定一个单链表，设计一个算法实现链表向右旋转 K 个位置。
+//     * 11.todo (不熟练)给定一个单链表，设计一个算法实现链表向右旋转 K 个位置。
 //     * 举例：给定 head->1->2->3->4->5->NULL, K=3,右旋后即为 head->3->4->5-->1->2->NULL
 //     * @param k
 //     * @return
@@ -322,7 +326,7 @@
 //        Node kPreNode = findKthToTail(k+1);
 //        //倒数第k个结点
 //        Node kNode = kPreNode.next;
-//
+//          //注意边界条件
 //        if(kNode != null){
 //            //倒数第k+1个结点指向倒数第k个结点的下一个结点
 //            kPreNode.next = kNode.next;
@@ -387,10 +391,10 @@
 //     * @return
 //     */
 //    public Node detectCrossNode(){
-//
+//        //注意起始条件
 //        Node fast = head;
 //        Node slow = head;
-//
+//          //注意判断条件
 //        while (fast !=null && fast.next !=null){
 //            fast = fast.next.next;
 //            slow = slow.next;
@@ -514,8 +518,8 @@
 //        //测试12
 ////        linkedList.deleteKthToTail(3);
 //        //测试13
-////        Node node = detectCommonNode(linkedList,linkedList1);
-////        System.out.println("第一个相交的结点:" + node.data);
+//        Node node = detectCommonNode(linkedList,linkedList1);
+//        System.out.println("第一个相交的结点:" + node.data);
 //
 //        //输出链表
 ////        linkedList.printLinkedList();
