@@ -107,6 +107,7 @@ public class LinkedListDemo {
 
         head.next = pre;
 
+
     }
 
     /**
