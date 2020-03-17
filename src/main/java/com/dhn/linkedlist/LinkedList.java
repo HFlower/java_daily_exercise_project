@@ -343,47 +343,60 @@ public class LinkedList {
      * @return
      */
     public static Node detectCommonNode(LinkedList list1, LinkedList list2){
-
+        //方法一：
         //链表的长度
-        int length1 = 0;
-        int length2 = 0;
-        //指向头结点的指针
-        Node p1 = list1.head;
-        Node p2 = list2.head;
-        //遍历链表获得长度
-        while(p1.next!=null){
-            length1++;
-            p1 = p1.next;
+//        int length1 = 0;
+//        int length2 = 0;
+//        //指向头结点的指针
+//        Node p1 = list1.head;
+//        Node p2 = list2.head;
+//        //遍历链表获得长度
+//        while(p1.next!=null){
+//            length1++;
+//            p1 = p1.next;
+//        }
+//        while (p2.next!=null){
+//            length2++;
+//            p2 = p2.next;
+//        }
+//        //指针归到head位置
+//        p1 = list1.head;
+//        p2 = list2.head;
+//
+//        //长的链表比短的多的结点数
+//        int step =Math.abs(length1-length2);
+//        //长的先走多出来的结点数个步数
+//        while (step>0){
+//            if (length1 > length2){
+//                p1 = p1.next;
+//            }else {
+//                p2 = p2.next;
+//            }
+//            step--;
+//        }
+//
+//        //从到相交位置相同的距离后一起走，边走边比较data是否相等
+//        while (p1 !=null && p2.next !=null){
+//            p1 = p1.next;
+//            p2 = p2.next;
+//           if (p1.data == p2.data){
+//               return p1;
+//            }
+//        }
+//        return null;
+        //方法二
+        if(list1 == null || list2 == null){
+            return null;
         }
-        while (p2.next!=null){
-            length2++;
-            p2 = p2.next;
-        }
-        //指针归到head位置
-        p1 = list1.head;
-        p2 = list2.head;
+        Node pA = list1.head;
+        Node pB = list2.head;
 
-        //长的链表比短的多的结点数
-        int step =Math.abs(length1-length2);
-        //长的先走多出来的结点数个步数
-        while (step>0){
-            if (length1 > length2){
-                p1 = p1.next;
-            }else {
-                p2 = p2.next;
-            }
-            step--;
+        while (pA != pB){
+            pA = pA == null ? list2.head : pA.next;
+            pB = pB == null ? list1.head : pB.next;
         }
+        return pA;
 
-        //从到相交位置相同的距离后一起走，边走边比较data是否相等
-        while (p1 !=null && p2.next !=null){
-            p1 = p1.next;
-            p2 = p2.next;
-           if (p1.data == p2.data){
-               return p1;
-            }
-        }
-        return null;
     }
 
     /**
