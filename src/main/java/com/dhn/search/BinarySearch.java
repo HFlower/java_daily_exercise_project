@@ -1,13 +1,11 @@
 package com.dhn.search;
 
-import java.util.Arrays;
-
 /**
  * @description: 二分查找
  * @author: Dong HuaNan
  * @date: 2020/3/18 15:04
  */
-public class binarySearch {
+public class BinarySearch {
     /**
      *1.寻找一个数（基本的二分查找）
      * @param nums
@@ -97,7 +95,7 @@ public class binarySearch {
 
     public static void main(String[] args) {
         int[] a = {0,1,3,5,6,8,9,12};
-        binarySearch binarySearch = new binarySearch();
+        BinarySearch binarySearch = new BinarySearch();
 //        int result = binarySearch.binarySearch(a,2);
         int result = binarySearch.left_bound(a,8);
         System.out.println("target在数组中的位置：" + result);
