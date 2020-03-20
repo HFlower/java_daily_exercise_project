@@ -18,7 +18,6 @@ public class DateClass {
      * java8中的日期时间类不可变，都是线程安全的
      * @param args
      */
-
     public static void main(String[] args) {
 
         System.out.println("************************获取年月日时分秒************************");
