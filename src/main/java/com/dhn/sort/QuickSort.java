@@ -7,9 +7,9 @@ import java.util.Arrays;
  * @date: 2020/3/23 9:33
  */
 public class QuickSort {
+
     /**
      * 快速排序1
-     * 1.最好情况时间复杂度为O(nlogn)，最坏情况时间复杂度为O(n^2)，平均时间复杂度为O(nlogn)
      * @param arr
      * @param low
      * @param high
@@ -48,8 +48,13 @@ public class QuickSort {
         quickSort1(arr,i+1,high);
     }
 
+
     /**
      * 快速排序2
+     * 1.最好情况时间复杂度为O(nlogn)，最坏情况时间复杂度为O(n^2)，平均时间复杂度为O(nlogn)
+     * 2.没有额外申请内存空间，空间复杂度为O(1),是原地排序算法
+     * 3.不是稳定的排序算法，比如[1, 9, 1, 8, 9, 3, 7]，当j指向元素3时，i指向第一个9，此时i和j交换，第一个9会换到第二个9的后面，前后位置改变了
+     *  （稳定性：一组数中相同的两个数，排序完成后前后位置保持不变）
      * @param arr
      * @param low
      * @param high
