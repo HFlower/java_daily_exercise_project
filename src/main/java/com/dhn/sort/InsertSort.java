@@ -7,7 +7,7 @@ import java.util.Arrays;
  * @author: Dong HuaNan
  * @date: 2020/3/2 17:01
  */
-public abstract class insertSort {
+public abstract class InsertSort {
 
     /**
      * 1.从第二个元素开始遍历，称为未排序元素
