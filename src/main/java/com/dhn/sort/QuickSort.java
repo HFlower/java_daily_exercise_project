@@ -8,15 +8,15 @@ import java.util.Arrays;
  */
 public class QuickSort {
     /**
-     * 快速排序
+     * 快速排序1
      * 1.最好情况时间复杂度为O(nlogn)，最坏情况时间复杂度为O(n^2)，平均时间复杂度为O(nlogn)
      * @param arr
      * @param low
      * @param high
      */
-    public static void quickSort(int[] arr, int low, int high) {
+    public static void quickSort1(int[] arr, int low, int high) {
         int i , j ,pivot;
-        if (low > high){
+        if (low >= high){
             return;
         }
         i = low;
@@ -44,16 +44,47 @@ public class QuickSort {
         //当i==j时，跳出循环，把基准点归到i处，此时一次分区完成
         arr[i] = pivot;
         //递归，再分区基准点左边及右边
-        quickSort(arr,low,i-1);
-        quickSort(arr,i+1,high);
+        quickSort1(arr,low,i-1);
+        quickSort1(arr,i+1,high);
+    }
+
+    /**
+     * 快速排序2
+     * @param arr
+     * @param low
+     * @param high
+     */
+    public static void quickSort2(int[] arr, int low, int high){
+        if(low>=high){
+            return;
+        }
+        //选取最右边的点为基准点
+        int pivot = arr[high];
+        //从左往右遍历
+        int i = low;
+        int j = low;
+        while (j <= high){
+            //当指针j位置的值比基准点小时，交换arr[i]和arr[j]
+            if (arr[j] < pivot){
+                int temp = arr[i];
+                arr[i] = arr[j];
+                arr[j] = temp;
+                i++;
+            }
+            j++;
+        }
+        //j>high跳出循环，此时基准点仍处于最右侧，i的左边是比基准点小的元素，i及i右边是是除了基准点外都比基准点大的元素，交换基准点和i位置的元素，此时i左面都比基准点小，右面都比基准点大
+        arr[high] = arr[i];
+        arr[i] = pivot;
+        ////递归，再分区基准点左边及右边
+        quickSort2(arr,low,i-1);
+        quickSort2(arr,i+1,high);
     }
 
     public static void main(String[] args) {
-        int[] arr = {2,8,1,4,13,6,3,21,9,7,5,0};
-        QuickSort.quickSort(arr,0,arr.length-1);
+        int[] arr = {2,8,13,4,0,1,3,21,9,7,5,6};
+//        QuickSort.quickSort1(arr,0,arr.length-1);
+        QuickSort.quickSort2(arr,0,arr.length-1);
         System.out.println(Arrays.toString(arr));
-
     }
-
-
 }
