@@ -19,7 +19,7 @@ public class Java8Test3 {
         Optional<Integer> a = Optional.ofNullable(value1);
         Optional<Integer> b = Optional.of(value2);
 
-        System.out.println(test.sum(a,b));
+        System.out.println(test.sum(a, b));
     }
 
     private Integer sum(Optional<Integer> a, Optional<Integer> b) {
@@ -31,8 +31,6 @@ public class Java8Test3 {
         Integer value2 = b.get();
 
         return value1 + value2;
-
-
 
 
     }

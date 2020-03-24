@@ -11,6 +11,9 @@ public class SelectionSort {
 
     /**
      * 把待排数组分为已排序区间和未排序区间。每次从未排序区间中找到最小的元素，将其放到已排序区间的末尾。
+     * 1.时间复杂度O(n^2)
+     * 2.空间复杂度O(1)，所以为原地排序算法
+     * 3.不稳定 如[3,6,3,1,5]
      * @param arr
      */
     public static void selectSort(int[] arr){

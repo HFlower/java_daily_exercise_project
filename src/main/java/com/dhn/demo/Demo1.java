@@ -1,11 +1,11 @@
-package com.dhn.test;
+package com.dhn.demo;
 
 /**
  * @description: 验证值传递与引用传递
  * @author: Dong HuaNan
  * @date: 2020/3/2 15:14
  */
-public class JavaTest {
+public class Demo1 {
 
 
     public static void main(String[] args) {
