@@ -10,16 +10,21 @@ import java.util.*;
 public class Demo {
 
     public static void main(String[] args) {
-        int n = 4;
-        for (int i = 1;i <= n; i++){
-            for (int k = 1; k <=n-i; k++) {
-                System.out.print(" ");
+        List<String> list = new ArrayList<>();
+        list.add("a");
+        list.add("b");
+        list.add("c");
+//        list.forEach(str -> System.out.println("输出集合元素："+str));
+        Iterator iterator = list.iterator();
+        while (iterator.hasNext()){
+            String item = (String) iterator.next();
+            System.out.println(item);
+            if ("a".equals(item)){
+//                iterator.remove();
+                list.remove(item);
             }
-            for (int j = 1; j <= 2*i-1; j++) {
-                System.out.print("*");
-            }
-            System.out.println();
+//            item = "k";
         }
-
+        System.out.println(list);
     }
 }

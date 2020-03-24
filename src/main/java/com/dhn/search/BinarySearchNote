@@ -16,7 +16,7 @@ int binarySearch(int[] nums, int target) {
     return ...;
 }
 
-附：计算 mid 时需要技巧防止溢出，建议写成: mid = left + (right - left) / 2
+附：计算 mid 时需要技巧防止溢出，建议写成: mid = left + (right - left) / 2 或 mid = （left + (right - left)）>> 2
 
 （1）第一个，最基本的二分查找算法：
 因为我们初始化 right = nums.length - 1

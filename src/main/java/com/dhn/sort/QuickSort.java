@@ -91,5 +91,6 @@ public class QuickSort {
 //        QuickSort.quickSort1(arr,0,arr.length-1);
         QuickSort.quickSort2(arr,0,arr.length-1);
         System.out.println(Arrays.toString(arr));
+
     }
 }

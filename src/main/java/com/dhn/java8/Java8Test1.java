@@ -22,6 +22,7 @@ public class Java8Test1 {
         names.add("Kalpesh");
 
         names.forEach(System.out::println);
+        names.forEach(name -> System.out.println("输出元素："+name));
 
 
     }
