@@ -22,7 +22,7 @@ public abstract class InsertSort {
      * @param arr
      * @return
      */
-    public static int[] sort(int[] arr){
+    public static int[] insertSort(int[] arr){
 
         //第一个算是已经排好序的，从第二个开始比较
         for (int i = 1;i<arr.length;i++){
@@ -45,7 +45,7 @@ public abstract class InsertSort {
 
     public static void main(String[] args) {
         int[] arr ={3,6,1,9,4,2,7,0};
-        int[] result = sort(arr);
+        int[] result = insertSort(arr);
         System.out.println(Arrays.toString(result));
     }
 }
