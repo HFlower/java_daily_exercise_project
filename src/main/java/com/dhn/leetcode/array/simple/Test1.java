@@ -1,11 +1,11 @@
-package com.dhn.leetcode;
+package com.dhn.leetcode.array.simple;
 
 /**
  * @description:
  * @author: Dong HuaNan
  * @date: 2020/3/12 10:03
  */
-public class Simple {
+public class Test1 {
     /**
      * 17.04数组nums包含从0到n的所有整数，但其中缺了一个。请编写代码找出那个缺失的整数。在O(n)时间内完成
      * 示例 1:输入：[3,0,1] 输出：2
@@ -29,7 +29,7 @@ public class Simple {
 
     public static void main(String[] args) {
         int[] arr = new int[]{9,6,4,2,3,5,7,0,1};
-        Simple simple = new Simple();
+        Test1 simple = new Test1();
         int num = simple.missingNumber(arr);
 
         System.out.println(num);
