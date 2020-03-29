@@ -1,13 +1,11 @@
 package com.dhn.javabasis.list;
 
-import javax.sound.midi.SoundbankResource;
 import java.util.ArrayList;
-import java.util.Iterator;
 import java.util.List;
 import java.util.ListIterator;
 
 /**
- * @description:
+ * @description: list特殊的迭代方法
  * @author: Dong HuaNan
  * @date: 2020/3/29 17:39
  */
