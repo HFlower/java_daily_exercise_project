@@ -1,4 +1,4 @@
-package com.dhn.javabasis.set;
+package com.dhn.javabasis.collections.set;
 
 import java.util.Objects;
 import java.util.TreeSet;

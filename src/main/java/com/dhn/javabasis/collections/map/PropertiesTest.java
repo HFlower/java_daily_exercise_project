@@ -1,9 +1,6 @@
-package com.dhn.javabasis.map;
-
-import org.opensaml.xml.signature.P;
+package com.dhn.javabasis.collections.map;
 
 import java.io.FileInputStream;
-import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.util.Properties;

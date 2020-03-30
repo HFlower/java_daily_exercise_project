@@ -1,7 +1,6 @@
-package com.dhn.javabasis.Queue;
+package com.dhn.javabasis.collections.Queue;
 
 
-import javax.sound.midi.SoundbankResource;
 import java.util.LinkedList;
 
 /**

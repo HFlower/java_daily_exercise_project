@@ -1,4 +1,4 @@
-package com.dhn.javabasis.list;
+package com.dhn.javabasis.collections.list;
 
 import java.util.ArrayList;
 import java.util.List;

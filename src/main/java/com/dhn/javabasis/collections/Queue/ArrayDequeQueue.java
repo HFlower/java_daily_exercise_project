@@ -1,4 +1,4 @@
-package com.dhn.javabasis.Queue;
+package com.dhn.javabasis.collections.Queue;
 
 import java.util.ArrayDeque;
 
