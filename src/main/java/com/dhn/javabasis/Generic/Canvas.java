@@ -3,7 +3,7 @@ package com.dhn.javabasis.Generic;
 import java.util.List;
 
 /**
- * @description:
+ * @description: 类型通配符
  * @author: Dong HuaNan
  * @date: 2020/3/30 16:00
  */
