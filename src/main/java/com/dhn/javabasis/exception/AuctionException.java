@@ -6,11 +6,23 @@ package com.dhn.javabasis.exception;
  * @date: 2020/3/31 11:44
  */
 public class AuctionException extends RuntimeException{
-    //两个构造器
+
     public AuctionException() {
     }
-    //用于getMessage()
+
+    /**
+     * 用于getMessage()
+     * @param message
+     */
     public AuctionException(String message) {
         super(message);
+    }
+
+    /**
+     * cause为原始异常，可实现异常链
+     * @param cause
+     */
+    public AuctionException(Throwable cause) {
+        super(cause);
     }
 }

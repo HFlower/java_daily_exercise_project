@@ -9,7 +9,7 @@ import java.io.*;
  */
 public class AutoCloseTest {
     public static void main(String[] args) throws IOException {
-        //try后（）内可声明、初始化多个在程序结束时必须显示关闭的资源，资源实现类必须实现AutoCloseable或Closeable接口
+        //try后（）内可声明、初始化多个在程序结束时必须显式关闭的资源，资源实现类必须实现AutoCloseable或Closeable接口
         //自动关闭资源的try语句相当于包含了隐式的finally块，所以没有catch/finally块
         try (
                 BufferedReader br = new BufferedReader(new FileReader("AutoCloseTest.java"));
