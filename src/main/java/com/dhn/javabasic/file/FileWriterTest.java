@@ -10,7 +10,7 @@ import java.io.IOException;
  */
 public class FileWriterTest {
     public static void main(String[] args) {
-        try (FileWriter fileWriter = new FileWriter("poem.txt")){
+        try (FileWriter fileWriter = new FileWriter("E:\\MyIntellijSpace3\\project\\src\\main\\java\\com\\dhn\\javabasic\\file\\poem.txt")){
             fileWriter.write("锦瑟 - 李商隐\r\n");
             fileWriter.write("锦瑟无端五十弦，一弦一柱思华年。\r\n");
             fileWriter.write("庄生晓梦迷蝴蝶，望帝春心托杜鹃。\r\n");

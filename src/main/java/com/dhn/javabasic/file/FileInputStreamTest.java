@@ -13,7 +13,7 @@ public class FileInputStreamTest {
     public static void main(String[] args) throws IOException {
         //注：写绝对路径
         FileInputStream fileInputStream = new FileInputStream("E:\\MyIntellijSpace3\\project\\src\\main\\java\\com\\dhn\\javabasic\\file\\FileInputStreamTest.java");
-        FileOutputStream fileOutputStream = new FileOutputStream("newFile.txt");
+        FileOutputStream fileOutputStream = new FileOutputStream("E:\\MyIntellijSpace3\\project\\src\\main\\java\\com\\dhn\\javabasic\\file\\newFile.txt");
         //创建容量为1024的“竹筒”
         byte[] bbuf = new byte[1024];
         //保存实际读取的字节数
