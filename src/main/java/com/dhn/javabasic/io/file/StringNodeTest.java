@@ -1,4 +1,4 @@
-package com.dhn.javabasic.file;
+package com.dhn.javabasic.io.file;
 
 import java.io.IOException;
 import java.io.StringReader;

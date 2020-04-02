@@ -1,6 +1,4 @@
-package com.dhn.javabasic.file.serializable;
-
-import org.opensaml.xml.signature.P;
+package com.dhn.javabasic.io.serializable;
 
 import java.io.*;
 
@@ -23,7 +21,7 @@ public class WriteObject {
     private static void serializablePerson() {
         try (
                 //序列化：创建一个ObjectOutputStream
-                ObjectOutputStream objectOutputStream = new ObjectOutputStream(new FileOutputStream("E:\\MyIntellijSpace3\\project\\src\\main\\java\\com\\dhn\\javabasic\\file\\serializable\\object.txt"))
+                ObjectOutputStream objectOutputStream = new ObjectOutputStream(new FileOutputStream("E:\\MyIntellijSpace3\\project\\src\\main\\java\\com\\dhn\\javabasic\\io\\serializable\\object.txt"))
 
         ) {
 //            Person person1 = new Person("flower1", 22);
@@ -59,7 +57,7 @@ public class WriteObject {
     private static void deserializablePerson(){
         try(
                 //反序列化：创建一个ObjectInputStream
-                ObjectInputStream objectInputStream = new ObjectInputStream(new FileInputStream("E:\\MyIntellijSpace3\\project\\src\\main\\java\\com\\dhn\\javabasic\\file\\serializable\\object.txt"))
+                ObjectInputStream objectInputStream = new ObjectInputStream(new FileInputStream("E:\\MyIntellijSpace3\\project\\src\\main\\java\\com\\dhn\\javabasic\\io\\serializable\\object.txt"))
         )
         {
             //从输入流中读取一个对象，强制转换为Person类

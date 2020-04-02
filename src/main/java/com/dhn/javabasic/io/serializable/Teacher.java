@@ -1,4 +1,4 @@
-package com.dhn.javabasic.file.serializable;
+package com.dhn.javabasic.io.serializable;
 
 import java.io.Serializable;
 

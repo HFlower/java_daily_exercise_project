@@ -17,3 +17,13 @@
      checkBounds(bytes, offset, length);
      this.value = StringCoding.decode(bytes, offset, length);
  }
+
+4.两种序列化机制比较
+（1）实现Serializable接口
+系统自动存储必要信息、易于实现，只需实现接口，不用任何代码支持、性能略差
+（2）实现Externalizable接口
+程序员决定存储那些信息、实现接口必须实现两个空方法、性能略好
+5.序列化注意
+（1）对象类名，实例变量都会被实例化；方法、类变量transient实例变量都不会被序列化
+（2）反序列化对象时必须有序列化对象的class文件
+（3）当通过文件、网络读取序列化后的对象时，必须按实际写入顺序进行读取

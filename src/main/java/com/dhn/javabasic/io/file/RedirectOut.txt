@@ -1,2 +1,2 @@
 此情可待成追忆，只是当时已惘然
-com.dhn.javabasic.file.RedirectOut@685f4c2e
+com.dhn.javabasic.io.RedirectOut@685f4c2e

@@ -1,4 +1,4 @@
-package com.dhn.javabasic.file.serializable;
+package com.dhn.javabasic.io.serializable;
 
 import java.io.FileInputStream;
 import java.io.FileOutputStream;
@@ -14,8 +14,8 @@ public class SerializableMutable {
     public static void main(String[] args) {
         try (
                 //序列化：创建一个ObjectOutputStream
-                ObjectOutputStream objectOutputStream = new ObjectOutputStream(new FileOutputStream("E:\\MyIntellijSpace3\\project\\src\\main\\java\\com\\dhn\\javabasic\\file\\serializable\\mutable.txt"));
-                ObjectInputStream objectInputStream = new ObjectInputStream(new FileInputStream("E:\\MyIntellijSpace3\\project\\src\\main\\java\\com\\dhn\\javabasic\\file\\serializable\\mutable.txt"))
+                ObjectOutputStream objectOutputStream = new ObjectOutputStream(new FileOutputStream("E:\\MyIntellijSpace3\\project\\src\\main\\java\\com\\dhn\\javabasic\\io\\serializable\\mutable.txt"));
+                ObjectInputStream objectInputStream = new ObjectInputStream(new FileInputStream("E:\\MyIntellijSpace3\\project\\src\\main\\java\\com\\dhn\\javabasic\\io\\serializable\\mutable.txt"))
 
         ){
             Person p = new Person("孙悟空",500);
@@ -29,6 +29,7 @@ public class SerializableMutable {
             System.out.println(p1==p2);
             //仍为孙悟空
             System.out.println(p2.getName());
+
         }catch (Exception e){
             e.printStackTrace();
         }
