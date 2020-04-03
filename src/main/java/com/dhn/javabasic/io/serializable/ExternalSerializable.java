@@ -6,7 +6,7 @@ import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
 
 /**
- * @description:
+ * @description: 测试Externalizable
  * @author: Dong HuaNan
  * @date: 2020/4/2 15:27
  */
