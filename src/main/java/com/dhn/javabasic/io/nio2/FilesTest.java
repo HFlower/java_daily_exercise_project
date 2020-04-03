@@ -1,6 +1,5 @@
 package com.dhn.javabasic.io.nio2;
 
-import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.nio.charset.Charset;
 import java.nio.file.FileStore;
