@@ -31,7 +31,7 @@ public class FileChannelTest {
             //复原position、limit的位置
             byteBuffer.clear();
             //使用GBK字符集创建解码器
-            Charset charSet = Charset.forName("GBK");
+            Charset charSet = Charset.forName("UTF-8");
             CharsetDecoder decoder = charSet.newDecoder();
             //使用解码器将ByteBuffer转成CharBuffer
             CharBuffer charBuffer = decoder.decode(byteBuffer);
