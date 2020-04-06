@@ -3,16 +3,26 @@ package com.dhn.javabasic.thread.account;
 import lombok.Getter;
 import lombok.Setter;
 
+import java.util.concurrent.locks.Condition;
+import java.util.concurrent.locks.Lock;
 import java.util.concurrent.locks.ReentrantLock;
 
 /**
- * @description: 银行账户（同步方法、同步锁、线程通信）
+ * @description: 使用Condition控制线程通信
  * @author: Dong HuaNan
- * @date: 2020/4/5 18:54
+ * @date: 2020/4/6 12:55
  */
 @Getter
 @Setter
-public class Account {
+public class AccountLock {
+    /**
+     * 定义锁对象
+     */
+    private final Lock lock = new ReentrantLock();
+    /**
+     * 获得指定锁对象对应的condition
+     */
+    private final Condition condition = lock.newCondition();
     /**
      * 封装账户编号，余额两个成员变量
      */
@@ -23,10 +33,10 @@ public class Account {
      */
     private boolean flag = false;
 
-    public Account() {
+    public AccountLock() {
     }
 
-    public Account(String accountNo, double balance) {
+    public AccountLock(String accountNo, double balance) {
         this.accountNo = accountNo;
         this.balance = balance;
     }
@@ -49,26 +59,27 @@ public class Account {
     }
 
     /**
-     * 提供一个线程安全的取钱方法
+     * 取款
      * @param drawAmount
      */
-    public synchronized void draw(double drawAmount){
+    public void draw(double drawAmount){
+        //显式的使用lock来充当同步监视器
+        lock.lock();
         try{
-            //flag为false，没有存款，取钱方法阻塞
-            if (!flag){
-                wait();
+            if(!flag){
+                condition.await();
             }else {
                 //flag为true，取钱者线程向下执行
                 System.out.println(Thread.currentThread().getName() + "取钱" + drawAmount);
-                //修改余额
                 balance -= drawAmount;
                 System.out.println("\t余额为： " + balance);
                 flag = false;
-                //唤醒其他线程
-                notifyAll();
+                condition.signalAll();
             }
         }catch (InterruptedException e){
             e.printStackTrace();
+        }finally {
+            lock.unlock();
         }
     }
 
@@ -76,21 +87,23 @@ public class Account {
      * 存款
      * @param depositAmount
      */
-    public synchronized void deposit(double depositAmount){
-        try{
-            //flag为true，有存款，存款方法阻塞
-            if(flag){
-                wait();
+    public void deposit(double depositAmount){
+        lock.lock();
+        try {
+            if (flag){
+                condition.await();
             }else {
                 //flag为false，没有存款，存款者线程向下执行
                 System.out.println(Thread.currentThread().getName() + "存钱" + depositAmount);
                 balance += depositAmount;
                 System.out.println("\t余额为： " + balance);
                 flag = true;
-                notifyAll();
+                condition.signalAll();
             }
         }catch (InterruptedException e){
             e.printStackTrace();
+        }finally {
+            lock.unlock();
         }
     }
 }
