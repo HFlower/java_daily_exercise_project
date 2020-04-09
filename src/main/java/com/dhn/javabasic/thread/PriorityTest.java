@@ -1,7 +1,7 @@
 package com.dhn.javabasic.thread;
 
 /**
- * @description:
+ * @description: 线程优先级
  * @author: Dong HuaNan
  * @date: 2020/4/5 18:36
  */
