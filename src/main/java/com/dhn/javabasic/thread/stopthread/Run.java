@@ -16,8 +16,8 @@ public class Run {
             thread.interrupt();
             //this.interrupted(): 测试当前线程是否已经中断；
             //this.isInterrupted(): 测试线程是否已经中断；
-            System.out.println("stop 1??"+thread.interrupted());
-            System.out.println("stop 2??"+thread.isInterrupted());
+//            System.out.println("stop 1??"+thread.interrupted());
+//            System.out.println("stop 2??"+thread.isInterrupted());
         }catch (InterruptedException e){
             e.printStackTrace();
         }
