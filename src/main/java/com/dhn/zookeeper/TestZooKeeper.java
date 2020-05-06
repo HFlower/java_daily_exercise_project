@@ -2,11 +2,13 @@ package com.dhn.zookeeper;
 
 import lombok.SneakyThrows;
 import org.apache.zookeeper.*;
+import org.apache.zookeeper.data.Stat;
 import org.aspectj.lang.annotation.Before;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
 import java.io.IOException;
+import java.util.List;
 
 /**
  * @description:
@@ -25,12 +27,25 @@ public class TestZooKeeper {
     private int sessionTimeout = 2000;
     private ZooKeeper zkClient;
 
+    //在每个测试方法之前执行。注解在【非静态方法】上。
     @BeforeEach
     public void init() throws IOException {
         zkClient = new ZooKeeper(connectString, sessionTimeout, new Watcher() {
             @Override
             public void process(WatchedEvent watchedEvent) {
-
+                System.out.println("*********************start*********************");
+                List<String> children = null;
+                try {
+                    children = zkClient.getChildren("/",true);
+                    for (String child : children){
+                        System.out.println(child);
+                    }
+                    System.out.println("*********************end*********************");
+                } catch (KeeperException e) {
+                    e.printStackTrace();
+                } catch (InterruptedException e) {
+                    e.printStackTrace();
+                }
             }
         });
     }
@@ -43,6 +58,26 @@ public class TestZooKeeper {
         //访问控制权限，节点类型
         String path = zkClient.create("/animal","dog".getBytes(), ZooDefs.Ids.OPEN_ACL_UNSAFE, CreateMode.PERSISTENT);
         System.out.println(path);
+    }
+
+    /**
+     * 获取子节点并监听节点的变化
+     */
+    @Test
+    public void getDataAndWatch() throws KeeperException, InterruptedException {
+        List<String> children = zkClient.getChildren("/",true);
+        for (String child : children){
+            System.out.println(child);
+        }
+        Thread.sleep(Long.MAX_VALUE);
+    }
+    /**
+     * 判断节点是否存在
+     */
+    @Test
+    public void exist() throws KeeperException, InterruptedException {
+        Stat stat = zkClient.exists("/cat",false);
+        System.out.println(stat == null ? "not exist" : "exist");
     }
 
 }
