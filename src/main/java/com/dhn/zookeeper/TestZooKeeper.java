@@ -1,5 +1,11 @@
 package com.dhn.zookeeper;
 
+import lombok.SneakyThrows;
+import org.apache.zookeeper.WatchedEvent;
+import org.apache.zookeeper.Watcher;
+import org.apache.zookeeper.ZooKeeper;
+import org.junit.jupiter.api.Test;
+
 /**
  * @description:
  * @author: Dong HuaNan
@@ -16,6 +22,8 @@ public class TestZooKeeper {
      */
     private int sessionTimeout = 2000;
     private ZooKeeper zkClient;
+
+    @SneakyThrows
     @Test
     public void init(){
         zkClient = new ZooKeeper(connectString,sessionTimeout,new Watcher(){
