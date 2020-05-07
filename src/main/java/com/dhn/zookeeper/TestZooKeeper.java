@@ -80,4 +80,7 @@ public class TestZooKeeper {
         System.out.println(stat == null ? "not exist" : "exist");
     }
 
+    //监听服务器节点动态上下线,客户端能实时洞察到服务器上下线的变化
+    //相对于zookeeper来说，server和client都是客户端，server往集群上写数据，client监听集群数据的变化
+
 }
