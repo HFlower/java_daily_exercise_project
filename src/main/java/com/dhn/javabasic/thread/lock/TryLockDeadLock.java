@@ -6,7 +6,7 @@ import java.util.concurrent.locks.Lock;
 import java.util.concurrent.locks.ReentrantLock;
 
 /**
- * @description: tryLock避免死锁
+ * @description: tryLock(long time,TimeUnit unit)超时就放弃        避免死锁
  * @author: Dong HuaNan
  * @date: 2020/5/12 8:56
  */
