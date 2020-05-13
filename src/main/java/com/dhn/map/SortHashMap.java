@@ -1,5 +1,7 @@
 package com.dhn.map;
 
+import java.sql.ResultSet;
+import java.sql.SQLException;
 import java.util.*;
 
 /**
@@ -39,6 +41,7 @@ public class SortHashMap {
         userHashMap.put(3,new User("cc",21));
         userHashMap.put(4,new User("dd",23));
         userHashMap.put(5,new User("ee",20));
+
 
         System.out.println("未排序的："+userHashMap);
 
