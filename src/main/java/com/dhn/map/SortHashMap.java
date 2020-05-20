@@ -35,18 +35,27 @@ public class SortHashMap {
 
     public static void main(String[] args) {
 
-        HashMap<Integer,User> userHashMap = new HashMap<>();
-        userHashMap.put(1,new User("aa",19));
-        userHashMap.put(2,new User("bb",24));
-        userHashMap.put(3,new User("cc",21));
-        userHashMap.put(4,new User("dd",23));
-        userHashMap.put(5,new User("ee",20));
+//        HashMap<Integer,User> userHashMap = new HashMap<>();
+//        userHashMap.put(1,new User("aa",19));
+//        userHashMap.put(2,new User("bb",24));
+//        userHashMap.put(3,new User("cc",21));
+//        userHashMap.put(4,new User("dd",23));
+//        userHashMap.put(5,new User("ee",20));
+//
+//
+//        System.out.println("未排序的："+userHashMap);
+//
+//        HashMap<Integer,User> sort = SortHashMap.sort(userHashMap);
+//        System.out.println("已排序的："+sort);
 
-
-        System.out.println("未排序的："+userHashMap);
-
-        HashMap<Integer,User> sort = SortHashMap.sort(userHashMap);
-        System.out.println("已排序的："+sort);
+        SortedSet<String> createTime = new TreeSet<>();
+        createTime.add("2020_05_01");
+        createTime.add("2020_11_10");
+        createTime.add("2021_06_01");
+        createTime.add("2020_06_03");
+        createTime.add("2020_01_30");
+        String latest = createTime.last();
+        System.out.println(latest);
     }
 }
 
