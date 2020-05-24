@@ -8,7 +8,10 @@ import java.util.concurrent.locks.ReentrantReadWriteLock;
  * @date: 2020/5/24 10:42
  */
 public class CinemaReadWrite {
-    private static ReentrantReadWriteLock reentrantReadWriteLockLock = new ReentrantReadWriteLock();
+    /**
+     * 非公平
+     */
+    private static ReentrantReadWriteLock reentrantReadWriteLockLock = new ReentrantReadWriteLock(false);
     private static ReentrantReadWriteLock.ReadLock readLock = reentrantReadWriteLockLock.readLock();
     private static ReentrantReadWriteLock.WriteLock writeLock = reentrantReadWriteLockLock.writeLock();
 
@@ -33,9 +36,10 @@ public class CinemaReadWrite {
     }
 
     public static void main(String[] args) {
-        new Thread(() -> read(),"Thread1").start();
+        new Thread(() -> write(),"Thread1").start();
         new Thread(() -> read(),"Thread2").start();
-        new Thread(() -> write(),"Thread3").start();
+        new Thread(() -> read(),"Thread3").start();
         new Thread(() -> write(),"Thread4").start();
+        new Thread(() -> read(),"Thread5").start();
     }
 }

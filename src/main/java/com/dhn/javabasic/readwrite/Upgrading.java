@@ -3,22 +3,25 @@ package com.dhn.javabasic.readwrite;
 import java.util.concurrent.locks.ReentrantReadWriteLock;
 
 /**
- * @description: 演示非公平和公平的ReentrantReadWriteLock的策略
+ * @description: 锁的升降级
  * @author: Dong HuaNan
- * @date: 2020/5/24 10:51
+ * @date: 2020/5/24 11:42
  */
-public class NonfairBargeDemo {
+public class Upgrading {
     private static ReentrantReadWriteLock reentrantReadWriteLock = new ReentrantReadWriteLock(true);
     private static ReentrantReadWriteLock.ReadLock readLock = reentrantReadWriteLock.readLock();
     private static ReentrantReadWriteLock.WriteLock writeLock = reentrantReadWriteLock.writeLock();
 
-    private static void read(){
+    private static void readUpgrading(){
         System.out.println(Thread.currentThread().getName()+"开始尝试获取读锁");
         readLock.lock();
         try {
             System.out.println(Thread.currentThread().getName()+"得到读锁，正在读取");
             try {
-                Thread.sleep(20);
+                Thread.sleep(1000);
+                System.out.println("升级会带来阻塞");
+                writeLock.lock();
+                System.out.println(Thread.currentThread().getName()+"得到写锁，升级成功");
             } catch (InterruptedException e) {
                 e.printStackTrace();
             }
@@ -28,40 +31,33 @@ public class NonfairBargeDemo {
         }
     }
 
-    private static void write(){
+    private static void writeUpgrading(){
         System.out.println(Thread.currentThread().getName()+"开始尝试获取写锁");
         writeLock.lock();
         try {
             System.out.println(Thread.currentThread().getName()+"得到写锁，正在写入");
             try {
-                Thread.sleep(40);
+                Thread.sleep(1000);
+                readLock.lock();
+                System.out.println(Thread.currentThread().getName()+"在不释放写锁情况下，直接获取读锁，成功降级");
             } catch (InterruptedException e) {
                 e.printStackTrace();
             }
         }finally {
+            readLock.unlock();
             System.out.println(Thread.currentThread().getName()+"释放写锁");
             writeLock.unlock();
         }
     }
 
-    public static void main(String[] args) {
-        new Thread(() -> write(),"Thread1").start();
-        new Thread(() -> read(),"Thread2").start();
-        new Thread(() -> read(),"Thread3").start();
-        new Thread(() -> write(),"Thread4").start();
-        new Thread(() -> read(),"Thread5").start();
-        //创建线程来插队
-        new Thread(new Runnable() {
-            @Override
-            public void run() {
-                Thread thread[] = new Thread[1000];
-                for (int i = 0; i < 1000; i++) {
-                    thread[i] = new Thread(() -> read(), "子线程创建的Thread" + i);
-                }
-                for (int i = 0; i < 1000; i++) {
-                    thread[i].start();
-                }
-            }
-        }).start();
+    public static void main(String[] args) throws InterruptedException {
+        System.out.println("先演示降级是可以的");
+        Thread thread1 = new Thread(() -> writeUpgrading(), "Thread1");
+        thread1.start();
+        thread1.join();
+        System.out.println("--------------------------------");
+        System.out.println("演示升级是不可以的");
+        Thread thread2 = new Thread(() -> readUpgrading(), "Thread2");
+        thread2.start();
     }
 }
