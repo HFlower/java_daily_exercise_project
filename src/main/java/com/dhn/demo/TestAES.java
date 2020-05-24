@@ -20,12 +20,13 @@ public class TestAES {
     private static final String KEY = "13159680468110791315968046811079";
 
     /**
-     * 算法
+     * 算法(算法模式：ECB（Electronic Code Book，电子密码本）模式、
+     * 补码方式：PKCS5Padding)
      */
     private static final String ALGORITHMSTR = "AES/ECB/PKCS5Padding";
 
     public static void main(String[] args) throws Exception {
-        String content = "花花花花花";
+        String content = "花花花花花11111";
         System.out.println("加密前：" + content);
 
         System.out.println("加密密钥和解密密钥：" + KEY);
@@ -67,7 +68,8 @@ public class TestAES {
     public static byte[] aesEncryptToBytes(String content, String encryptKey) throws Exception {
         KeyGenerator kgen = KeyGenerator.getInstance("AES");
         kgen.init(256);
-        Cipher cipher = Cipher.getInstance(ALGORITHMSTR);
+//        Cipher cipher = Cipher.getInstance(ALGORITHMSTR);
+        Cipher cipher = Cipher.getInstance("AES");
         cipher.init(Cipher.ENCRYPT_MODE, new SecretKeySpec(encryptKey.getBytes(), "AES"));
 
         return cipher.doFinal(content.getBytes("utf-8"));
@@ -96,7 +98,8 @@ public class TestAES {
         KeyGenerator kgen = KeyGenerator.getInstance("AES");
         kgen.init(256);
 
-        Cipher cipher = Cipher.getInstance(ALGORITHMSTR);
+//        Cipher cipher = Cipher.getInstance(ALGORITHMSTR);
+        Cipher cipher = Cipher.getInstance("AES");
         cipher.init(Cipher.DECRYPT_MODE, new SecretKeySpec(decryptKey.getBytes(), "AES"));
         byte[] decryptBytes = cipher.doFinal(encryptBytes);
 
