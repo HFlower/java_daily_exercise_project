@@ -1,4 +1,4 @@
-package com.dhn.javabasic.readwrite;
+package com.dhn.javabasic.thread.readwrite;
 
 import java.util.concurrent.locks.ReentrantReadWriteLock;
 
