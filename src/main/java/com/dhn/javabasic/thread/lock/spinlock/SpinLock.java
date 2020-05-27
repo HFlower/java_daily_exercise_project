@@ -1,4 +1,4 @@
-package com.dhn.javabasic.thread.spinlock;
+package com.dhn.javabasic.thread.lock.spinlock;
 
 import java.util.concurrent.atomic.AtomicReference;
 
