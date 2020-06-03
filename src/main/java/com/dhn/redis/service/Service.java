@@ -1,6 +1,6 @@
 package com.dhn.redis.service;
 
-import lombok.val;
+import com.dhn.redis.utils.JedisUtil;
 import redis.clients.jedis.Jedis;
 import redis.clients.jedis.exceptions.JedisDataException;
 
@@ -18,8 +18,9 @@ public class Service {
     }
 
     public void service() {
-        Jedis jedis = new Jedis("127.0.0.1", 6379);
-        String value = jedis.get("compid:" + id);
+//        Jedis jedis = new Jedis("127.0.0.1", 6379);
+        Jedis jedis = JedisUtil.getJedis();
+                String value = jedis.get("compid:" + id);
         try {
             //判断该值是否存在
             if (value == null) {
